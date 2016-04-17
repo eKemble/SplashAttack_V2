@@ -47,7 +47,12 @@
   <ItemGroup>
      <Compile Include="assets\Scripts\BalloonProjectileScript.cs" />
      <Compile Include="assets\Scripts\Player.cs" />
+     <Compile Include="assets\Scripts\Player1.cs" />
+     <Compile Include="assets\Scripts\Player2.cs" />
+     <Compile Include="assets\Scripts\Player3.cs" />
+     <Compile Include="assets\Scripts\Player4.cs" />
      <Compile Include="assets\Scripts\RandomSpawn.cs" />
+     <Compile Include="assets\Scripts\Startscreen.cs" />
      <Compile Include="assets\Scripts\TestMovement.cs" />
      <Compile Include="assets\Scripts\VerticalPlatformMovement.cs" />
      <Compile Include="assets\Scripts\WaterWeapon.cs" />

@@ -51,6 +51,14 @@ public class Player2 : Player
         {
             running = true;
             transform.position += new Vector3(controllerHorizontal * moveSpeed * Time.deltaTime, 0, 0);
+            if (controllerHorizontal > 0)
+            {
+                right = true;
+            }
+            if (controllerHorizontal < 0)
+            {
+                right = false;
+            }
             //print(controllerHorizontal);
             //print("jaksjdfkaj;lsdfjaklsd");
         }
