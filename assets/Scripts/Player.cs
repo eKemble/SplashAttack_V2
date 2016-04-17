@@ -13,8 +13,12 @@ public class Player : MonoBehaviour {
     public float jumpHeight = 6f; //increment if using just pure translational ascension
     public float jumpingForce = 500; //Accelerated jump
     public float maxWaterCapacity = 100f; //Amount of water that user can carry
+    public float maxBalloons = 5;
+    public float currentBalloons = 0;
+    public float balloonVelocity = 10;
     public float currentWaterSupply; //Current amount of water 
     public int health=100;
+    public GameObject balloonPrefab;
     public WaterWeapon myWeapon; //Starts off at Waterballoon
     public Collider myCollider;
     public Rigidbody myRigidbody;
@@ -23,7 +27,8 @@ public class Player : MonoBehaviour {
     public int bursts = 10; //Movement Modifiers(Dash Left & Right, Quick Fall, Super Jump, wall jump)
     public bool iced = false; // If we do snowballs/icegun
     public bool _________________________;
-
+    public bool right = true;
+    public bool projectile = true;
     public GameObject go;
     public bool canJump = true;
     public Vector3 myMovement = new Vector3(0f, 0f, 0f);
@@ -92,11 +97,29 @@ public class Player : MonoBehaviour {
             transform.position += new Vector3(horizontal * Time.deltaTime, 0, 0);
             print(horizontal);
             running = true;
+            if(horizontal > 0)
+            {
+            right = true;
+            }
+            if(horizontal < 0)
+            {
+                right = false;
+            }
+            
                     }
 
-        if (Input.GetButton("Horizontal")  /*CONTROLLER*/&& inTheAir && !stall) //SLOWED DOWN LATERAL MOVEMENT
-            transform.position += new Vector3(airHorizontal * Time.deltaTime, 0 , 0);
-
+        if (Input.GetButton("Horizontal")  /*CONTROLLER*/&& inTheAir && !stall)
+        {//SLOWED DOWN LATERAL MOVEMENT
+            transform.position += new Vector3(airHorizontal * Time.deltaTime, 0, 0);
+            if (horizontal > 0)
+            {
+                right = true;
+            }
+            if (horizontal < 0)
+            {
+                right = false;
+            }
+        }
         if (horizontal == 0) //you aren't moving
             running = false;
 
@@ -113,6 +136,14 @@ public class Player : MonoBehaviour {
         {
             running = true;
             transform.position += new Vector3(controllerHorizontal*moveSpeed * Time.deltaTime, 0, 0);
+            if (horizontal > 0)
+            {
+                right = true;
+            }
+            if (horizontal < 0)
+            {
+                right = false;
+            }
             //print(controllerHorizontal);
             //print("jaksjdfkaj;lsdfjaklsd");
         }
@@ -176,6 +207,7 @@ public class Player : MonoBehaviour {
                 bursts--;
                 controllerHorizontal = 0;
             }
+            
 
         }
 
@@ -183,6 +215,27 @@ public class Player : MonoBehaviour {
             if (Input.GetKeyUp("right shift") || Input.GetButtonUp("Stall")/*CONTROLLER*/)
             stall = false;
 
+            if (Input.GetButtonDown("Fire2") || Input.GetButtonDown("ControllerFire2"))
+            {
+            if (currentBalloons > 0)
+            {
+                GameObject balloon = Instantiate(balloonPrefab) as GameObject;
+                
+                Vector3 pos = this.transform.position;
+                pos.y += .3f;
+                if (right == true)
+                {
+                    pos.x += .3f;
+                }
+                else
+                {
+                    pos.x -= .3f;
+                }
+                balloon.transform.position = pos;
+                balloon.GetComponent<Rigidbody>().velocity = pos * balloonVelocity;
+                currentBalloons--;
+            }
+            }
         
     }
        
@@ -194,6 +247,14 @@ public class Player : MonoBehaviour {
             canJump = true;
             inTheAir = false;
             stall= false;
+        }
+        if (collision.gameObject.tag == "Balloon")
+        {
+            if(currentBalloons < maxBalloons)
+            {
+                currentBalloons++;
+                Destroy(collision.gameObject);
+            }
         }
 
 
