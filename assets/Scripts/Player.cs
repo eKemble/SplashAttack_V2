@@ -33,6 +33,11 @@ public class Player : MonoBehaviour {
     public bool canJump = true;
     public Vector3 myMovement = new Vector3(0f, 0f, 0f);
     public bool inTheAir = false;
+    static public int playersNum;
+    public GameObject player1Prefab;
+    public GameObject player2Prefab;
+    public GameObject player3Prefab;
+    public GameObject player4Prefab;
     float h;
     Vector3 dir;
     float vel;
@@ -42,6 +47,34 @@ public class Player : MonoBehaviour {
 
 
     void Start() {
+        if(playersNum == 2)
+        {
+            GameObject player1 = Instantiate(player1Prefab) as GameObject;
+            player1.transform.position= new Vector3(-6.5f, -4.8f, 0);
+            GameObject player2 = Instantiate(player2Prefab) as GameObject;
+            player2.transform.position = new Vector3(5.9f, -4.8f, 0);
+        }
+        if (playersNum == 3)
+        {
+            GameObject player1 = Instantiate(player1Prefab) as GameObject;
+            player1.transform.position = new Vector3(-6.5f, -4.8f, 0);
+            GameObject player2 = Instantiate(player2Prefab) as GameObject;
+            player2.transform.position = new Vector3(5.9f, -4.8f, 0);
+            GameObject player3 = Instantiate(player3Prefab) as GameObject;
+            player3.transform.position = new Vector3(5.53f, -0.02f, 0);
+        }
+        if (playersNum == 4)
+        {
+            GameObject player1 = Instantiate(player1Prefab) as GameObject;
+            player1.transform.position = new Vector3(-6.5f, -4.8f, 0);
+            GameObject player2 = Instantiate(player2Prefab) as GameObject;
+            player2.transform.position = new Vector3(5.9f, -4.8f, 0);
+            GameObject player3 = Instantiate(player3Prefab) as GameObject;
+            player3.transform.position = new Vector3(5.53f, -0.02f, 0);
+            GameObject player4 = Instantiate(player4Prefab) as GameObject;
+            player4.transform.position = new Vector3(-5.53f, -0.02f, 0);
+        }
+
         myCollider = GetComponent<Collider>();
         myRigidbody = GetComponent<Rigidbody>();
         go = gameObject;
