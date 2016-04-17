@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: e8f497711be7c4782ab3287617a30ada
+timeCreated: 1460853263
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: AnimationControls
+    100002: CenterJoint
+    100004: Character
+    100006: //RootNode
+    100008: ChestJoint
+    100010: ControlCircle1
+    100012: ControlCircle2
+    100014: HeadJoint
+    100016: imagePlane1
+    100018: LeftArmControls
+    100020: LeftArmIK
+    100022: LeftBallJoint
+    100024: LeftElbowJoint
+    100026: LeftFingersJoint
+    100028: LeftFootIK
+    100030: LeftFootJoint
+    100032: LeftHandJoint
+    100034: LeftKneeJoint
+    100036: LeftLegControl
+    100038: LeftLegIK
+    100040: LeftShoulderJoint
+    100042: LeftThighJoint
+    100044: LeftToeIK
+    100046: LeftToeJoint
+    100048: LeftWristJoint
+    100050: NeckJoint
+    100052: pCylinder4_mirroredInstance
+    100054: pCylinder4_orig4
+    100056: RightArmControl
+    100058: RightArmIK
+    100060: RightBallJoint
+    100062: RightElbowControl
+    100064: RightElbowJoint
+    100066: RightFingersJoint
+    100068: RightFootControl
+    100070: RightFootIK
+    100072: RightFootJoint
+    100074: RightHandControl
+    100076: RightHandJoint
+    100078: RightKneeJoint
+    100080: RightLegIK
+    100082: RightShoulderJoint
+    100084: RightThighJoint
+    100086: RightToeIK
+    100088: RightToeJoint
+    100090: RightWristJoint
+    100092: TailboneJoint
+    100094: transform12
+    400000: AnimationControls
+    400002: CenterJoint
+    400004: Character
+    400006: //RootNode
+    400008: ChestJoint
+    400010: ControlCircle1
+    400012: ControlCircle2
+    400014: HeadJoint
+    400016: imagePlane1
+    400018: LeftArmControls
+    400020: LeftArmIK
+    400022: LeftBallJoint
+    400024: LeftElbowJoint
+    400026: LeftFingersJoint
+    400028: LeftFootIK
+    400030: LeftFootJoint
+    400032: LeftHandJoint
+    400034: LeftKneeJoint
+    400036: LeftLegControl
+    400038: LeftLegIK
+    400040: LeftShoulderJoint
+    400042: LeftThighJoint
+    400044: LeftToeIK
+    400046: LeftToeJoint
+    400048: LeftWristJoint
+    400050: NeckJoint
+    400052: pCylinder4_mirroredInstance
+    400054: pCylinder4_orig4
+    400056: RightArmControl
+    400058: RightArmIK
+    400060: RightBallJoint
+    400062: RightElbowControl
+    400064: RightElbowJoint
+    400066: RightFingersJoint
+    400068: RightFootControl
+    400070: RightFootIK
+    400072: RightFootJoint
+    400074: RightHandControl
+    400076: RightHandJoint
+    400078: RightKneeJoint
+    400080: RightLegIK
+    400082: RightShoulderJoint
+    400084: RightThighJoint
+    400086: RightToeIK
+    400088: RightToeJoint
+    400090: RightWristJoint
+    400092: TailboneJoint
+    400094: transform12
+    4300000: Character
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Character
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 1
+    resampleRotations: 1
+    optimizeGameObjects: 1
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.05
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: ChestJoint
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+m_EditorVersion: 5.3.4f1
+=======
+m_EditorVersion: 5.3.1f1
+>>>>>>> Stashed changes
+=======
+m_EditorVersion: 5.3.2f1
+>>>>>>> 2e78bdb7a16e30359cef39ed42452e1dd9662c46
+m_StandardAssetsVersion: 0
