@@ -4,6 +4,8 @@ using System.Collections;
 public class WaterWeapon : MonoBehaviour {
     ParticleSystem ps;
     public float currentWaterSupply = 12;
+    public int dmg =20;
+    public int dmgdone;
 
     void Start ()
     {
@@ -17,9 +19,9 @@ public class WaterWeapon : MonoBehaviour {
 
     void shoot()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("ControllerFire"))
         {
-           if(currentWaterSupply >= 0)
+           if(currentWaterSupply > 0)
             {
                 ps.Play();
                 currentWaterSupply -= 1;                       
@@ -35,9 +37,26 @@ public class WaterWeapon : MonoBehaviour {
             currentWaterSupply = 12;
     }
 
-    void OnParticleCollision(Collider other)
+    /*dmg output
+    void OnCollisionEnter(Collider other)
     {
-        ps.Clear();
-    }
-
+        if (other.gameObject.tag == "player1")
+        {
+            Player1.health -= dmg;
+        }
+        if (other.gameObject.tag == "player2")
+        {
+            Player2.S.health -= dmg;
+        }
+        if (other.gameObject.tag == "player3")
+        {
+            Player3.S.health -= dmg;
+        }
+        if (other.gameObject.tag == "player4")
+        {
+            Player4.S.health -= dmg;
+        }
+    }*/
+        
+ 
 }
