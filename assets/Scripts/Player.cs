@@ -11,9 +11,10 @@ public class Player : MonoBehaviour {
         */
     public float moveSpeed = 8f; //Multiplier that influences the Horizontal input
     public float jumpHeight = 6f; //increment if using just pure translational ascension
-    public float jumpingForce = 3000; //Accelerated jump
+    public float jumpingForce = 500; //Accelerated jump
     public float maxWaterCapacity = 100f; //Amount of water that user can carry
     public float currentWaterSupply; //Current amount of water 
+    public int health=100;
     public WaterWeapon myWeapon; //Starts off at Waterballoon
     public Collider myCollider;
     public Rigidbody myRigidbody;
@@ -42,10 +43,10 @@ public class Player : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal") * moveSpeed; //Figures out if you are moving left or right, then scales it
         float airHorizontal = horizontal * 1.2f;//helps create a parabola affect when combined with the smaller jump height
         float parabolaJump = jumpingForce * .7f;
-        float controllerHorizontal = Input.GetAxis("ControllerHorizontalLeftStick") * 6000;
+        float controllerHorizontal = Input.GetAxis("ControllerHorizontalLeftStick") * 50;
         //var controllerVertical = Input.GetAxis("RightV") * 45;
 
-        print(controllerHorizontal);
+        // print(controllerHorizontal);
         //---------------------------------JUMP--------------------------------
 
         //If you press up and you are against a surface and you aren't holding the stall-button
@@ -86,43 +87,52 @@ public class Player : MonoBehaviour {
         //-----------------------------------------------------------------------------------------
 
         //----------------------------------------------MOVING-----------------------------------
-        if ((Input.GetButton("Horizontal") && !inTheAir && !stall))//NORMAL MOVEMENT
+        if (((Input.GetButton("Horizontal")) && !inTheAir && !stall))//NORMAL MOVEMENT
         {
             transform.position += new Vector3(horizontal * Time.deltaTime, 0, 0);
+            print(horizontal);
             running = true;
                     }
 
-        if (Input.GetButton("Horizontal") /*CONTROLLER*/&& inTheAir && !stall) //SLOWED DOWN LATERAL MOVEMENT
+        if (Input.GetButton("Horizontal")  /*CONTROLLER*/&& inTheAir && !stall) //SLOWED DOWN LATERAL MOVEMENT
             transform.position += new Vector3(airHorizontal * Time.deltaTime, 0 , 0);
 
         if (horizontal == 0) //you aren't moving
             running = false;
 
         /*
-        if ((Input.GetButton("ControllerHorizontal2") && !inTheAir && !stall))//NORMAL MOVEMENT
+        if ((Input.GetButton("ControllerHorizontalDpad") && !inTheAir && !stall))//NORMAL MOVEMENT
         {
-           
             running = true;
-            transform.position += new Vector3(controllerHorizontal * Time.deltaTime, 0, 0);
+            transform.position += new Vector3(controllerHorizontal * moveSpeed* Time.deltaTime, 0, 0);
             print(controllerHorizontal);
             print("jaksjdfkaj;lsdfjaklsd");
         }*/
-        //CONTROLLER LEFT STICK MOVEMENT
+
+        if(controllerHorizontal!=0 /*&& !inTheAir && !stall*/)
+        {
+            running = true;
+            transform.position += new Vector3(controllerHorizontal*moveSpeed * Time.deltaTime, 0, 0);
+            //print(controllerHorizontal);
+            //print("jaksjdfkaj;lsdfjaklsd");
+        }
+
+       /* //CONTROLLER LEFT STICK MOVEMENT
         if(Input.GetButton("ControllerHorizontalLeftStick") && !inTheAir && !stall)
         {
             transform.position += new Vector3(controllerHorizontal* Time.deltaTime, 0, 0);
             running = true;
             print("HI");
-        }
+        }*/
         //---------------------------------------------------------------------------------------
 
         //-------------------------STALL MOVEMENT MODIFIERS----------------------------------------------
 
-        if (Input.GetKey("right shift")/*CONTROLLER*/ && inTheAir != true) //Holding down
+        if ((Input.GetKey("right shift") || Input.GetButton("Stall"))/*CONTROLLER*/ && inTheAir != true) //Holding down
         {
             stall = true; //Stops player in their track
 
-            if (Input.GetButtonDown("Vertical") && canJump == true && bursts != 0)//BIG JUMP
+            if ((Input.GetButtonDown("Vertical") || Input.GetKeyDown("joystick button 1")) && canJump == true && bursts > 0)//BIG JUMP
             {
                 myMovement.y = jumpingForce*1.5f; 
                 myRigidbody.AddForce(myMovement);
@@ -132,7 +142,7 @@ public class Player : MonoBehaviour {
                 bursts--;
             }
 
-            if (Input.GetKeyDown("left") /*CONTROLLER*/&& bursts != 0) //Burst Left
+            if ((Input.GetKeyDown("left")) /*CONTROLLER*/&& bursts > 0) //Burst Left
             {
                 myMovement.x = -jumpingForce;
                 myRigidbody.AddForce(myMovement);
@@ -140,7 +150,7 @@ public class Player : MonoBehaviour {
                 bursts--;
             }
 
-            if (Input.GetKeyDown("right") /*CONTROLLER*/ && bursts != 0)//Burst Right
+            if ((Input.GetKeyDown("right")) /*CONTROLLER*/ && bursts > 0)//Burst Right
             {
                 myMovement.x = jumpingForce;
                 myRigidbody.AddForce(myMovement);
@@ -148,10 +158,29 @@ public class Player : MonoBehaviour {
                 bursts--;
             }
 
+            if(controllerHorizontal < 0)
+            {
+                myMovement.x = -jumpingForce/100;
+                myRigidbody.AddForce(myMovement);
+                myMovement = Vector3.zero;
+                bursts--;
+                controllerHorizontal = 0;
+            }
+
+
+            if (controllerHorizontal > 0)
+            {
+                myMovement.x = jumpingForce/100;
+                myRigidbody.AddForce(myMovement);
+                myMovement = Vector3.zero;
+                bursts--;
+                controllerHorizontal = 0;
+            }
+
         }
 
 
-            if (Input.GetKeyUp("right shift")/*CONTROLLER*/)
+            if (Input.GetKeyUp("right shift") || Input.GetButtonUp("Stall")/*CONTROLLER*/)
             stall = false;
 
         
