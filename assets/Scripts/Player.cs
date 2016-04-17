@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
     public float maxWaterCapacity = 100f; //Amount of water that user can carry
     public float maxBalloons = 5;
     public float currentBalloons = 0;
-    public float balloonVelocity = 10;
+    public float balloonVelocity = 5;
     public float currentWaterSupply; //Current amount of water 
     public int health=100;
     public GameObject balloonPrefab;
@@ -33,6 +33,11 @@ public class Player : MonoBehaviour {
     public bool canJump = true;
     public Vector3 myMovement = new Vector3(0f, 0f, 0f);
     public bool inTheAir = false;
+    float h;
+    Vector3 dir;
+    float vel;
+    float dist;
+    float a;
     // Use this for initialization
 
 
@@ -95,7 +100,7 @@ public class Player : MonoBehaviour {
         if (((Input.GetButton("Horizontal")) && !inTheAir && !stall))//NORMAL MOVEMENT
         {
             transform.position += new Vector3(horizontal * Time.deltaTime, 0, 0);
-            print(horizontal);
+            //print(horizontal);
             running = true;
             if(horizontal > 0)
             {
@@ -219,20 +224,44 @@ public class Player : MonoBehaviour {
             {
             if (currentBalloons > 0)
             {
+
                 GameObject balloon = Instantiate(balloonPrefab) as GameObject;
-                
-                Vector3 pos = this.transform.position;
-                pos.y += .3f;
-                if (right == true)
-                {
-                    pos.x += .3f;
+                Vector3 pos2 = this.transform.position;
+                if (right == true) {
+                    pos2.x += .5f;
+                    pos2.y += .5f;
+                    balloon.transform.position = pos2;
+                    Vector3 pos = this.transform.position;
+                    pos.x += 10;
+                    pos.y = 0;
+                    dir = pos - transform.position;
+                    h = dir.y;
+                    dir.y = 0;
+                    dist = dir.magnitude;
+                    //a = 90 * Mathf.Deg2Rad;
+                    //dist += h / Mathf.Tan(a);
+                    vel = Mathf.Sqrt(dist * Physics.gravity.magnitude );
+
                 }
                 else
-                {
-                    pos.x -= .3f;
+                    {
+                    pos2.x -= .5f;
+                    pos2.y += .5f;
+                    balloon.transform.position = pos2;
+                    Vector3 pos = this.transform.position;
+                    pos.x -= 10;
+                    pos.y = 0;
+                    dir = pos - transform.position;
+                    h = dir.y;
+                    dir.y = 0;
+                    dist = dir.magnitude;
+                    //a = 90 * Mathf.Deg2Rad;
+                    //dist += h / Mathf.Tan(a);
+                    vel = Mathf.Sqrt(dist * Physics.gravity.magnitude);
+ 
                 }
-                balloon.transform.position = pos;
-                balloon.GetComponent<Rigidbody>().velocity = pos * balloonVelocity;
+                print(vel * dir.normalized);
+                balloon.GetComponent<Rigidbody>().velocity = vel * dir.normalized;
                 currentBalloons--;
             }
             }

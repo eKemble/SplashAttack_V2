@@ -12,7 +12,7 @@ public class VerticalPlatformMovement : MonoBehaviour {
 	void Update () {
         GameObject platform = this.gameObject;
         Vector3 pos = this.transform.position;
-        if (pos.y >= 2)
+        if (pos.y >= 2.5)
         {
             down = true;
 
