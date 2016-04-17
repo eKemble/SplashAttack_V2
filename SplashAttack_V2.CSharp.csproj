@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -83,6 +77,10 @@
   <ItemGroup>
     <Compile Include="assets\Scripts\BalloonProjectileScript.cs" />
     <Compile Include="assets\Scripts\Player.cs" />
+    <Compile Include="assets\Scripts\Player1.cs" />
+    <Compile Include="assets\Scripts\Player2.cs" />
+    <Compile Include="assets\Scripts\Player3.cs" />
+    <Compile Include="assets\Scripts\Player4.cs" />
     <Compile Include="assets\Scripts\RandomSpawn.cs" />
     <Compile Include="assets\Scripts\Startscreen.cs" />
     <Compile Include="assets\Scripts\TestMovement.cs" />
